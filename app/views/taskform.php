@@ -13,6 +13,7 @@
                     <input type="text" name="email" class="form-control" id="email" value="<?php echo !empty($data['email']) ? $data['email'] : ''; ?>">
                 </div>
                 <div class="form-group">
+                    <label for="text">Текст задачи</label>
                     <textarea name="text" class="form-control" rows="5" id="text"><?php echo !empty($data['text']) ? $data['text'] : ''; ?></textarea>
                 </div>
                 <p><button type="submit" name="enter" class="btn btn-primary">Сохранить</button></p>
