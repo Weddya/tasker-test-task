@@ -72,16 +72,16 @@ class HomeController extends Controller
         if (!$this->model->isTaskExists($this->route['id'])) {
             $this->view->errorCode(404);
         }
-        $taskData = $this->model->getTaskData($this->route['id'])[0];
         
         if (!empty($_POST)) {
             $inputUsername = htmlspecialchars(trim($_POST['username']));
             $inputEmail = htmlspecialchars(trim($_POST['email']));
             $inputText = htmlspecialchars(trim($_POST['text']));
+            $oldText = $this->model->getTaskText($this->route['id']);
             if (!$this->model->formValidate($inputUsername, $inputEmail, $inputText)) {
                 $this->view->message('danger', $this->model->error);
             }
-            $this->model->editTask($this->route['id'], $inputUsername, $inputEmail, $inputText, $taskData['text']);
+            $this->model->editTask($this->route['id'], $inputUsername, $inputEmail, $inputText, $oldText);
             $this->view->message('success', 'Задача сохранена');
         }
         $vars = [

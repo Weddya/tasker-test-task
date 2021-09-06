@@ -66,6 +66,14 @@ class Task extends Model
         ];
         return $this->db->row('SELECT id, username, email, text FROM tasks WHERE id = :id', $params);
     }
+    
+    public function getTaskText($id)
+    {
+        $params = [
+            'id' => $id,
+        ];
+        return $this->db->column('SELECT text FROM tasks WHERE id = :id', $params);
+    }
 
     public function editTask($id, $inputUsername, $inputEmail, $inputText, $oldText)
     {
